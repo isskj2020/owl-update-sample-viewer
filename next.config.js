@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'export',
   reactStrictMode: true,
-  basePath: '/owl-update-sample-viewer',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },

@@ -9,12 +9,11 @@ import {
 } from '@mui/material'
 import { useEffect, useState } from 'react'
 import Graph from '@/components/Graph/Graph'
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH + '/samples' ?? ''
+import type { OWLData } from '@/types/types'
 
 export default function Page() {
-  const [owl, setOwl] = useState('sample1');
-  const [data, setData] = useState('{}');
+  const [owl, setOwl] = useState<string>('sample1')
+  const [data, setData] = useState<OWLData|null>(null)
 
   const handleChange = (event: SelectChangeEvent) => {
     setOwl(event.target.value)
@@ -26,7 +25,9 @@ export default function Page() {
       case 'sample2': file = `sample2.json`; break
       case 'sample3': file = `sample3.json`; break
     }
-    await fetch(`${basePath}/${file}`).then(x => x.json()).then(x => setData(x))
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH}/samples/${file}`)
+      .then(x => x.json())
+      .then(x => setData(x))
   }
 
   useEffect(() => {
