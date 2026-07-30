@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from 'storybook/test'
 import Graph from './Graph'
-import sample1 from '../../app/sample1.json'
+import { useEffect, useState } from 'react'
 
 
 const meta: Meta<typeof Graph> = {
@@ -11,12 +11,22 @@ const meta: Meta<typeof Graph> = {
 
 export default meta
 
+function StoryComponent() {
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/samples/sample1.json').then(x => x.json()).then(x => setData(x))
+  }, [])
+
+  if (!data) {
+    return <div>Loading...</div>
+  }
+
+  return <Graph data={data} />
+}
+
 type Story = StoryObj<typeof Graph>
 
-export const Default: Story = {
-  args: {
-    data: sample1,
-    focusedConstraint: null,
-    onFocusedConstraint: fn(),
-  },
+export const Default: StoryObj = {
+  render: () => <StoryComponent />
 }

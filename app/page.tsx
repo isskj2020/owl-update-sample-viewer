@@ -9,9 +9,6 @@ import {
 } from '@mui/material'
 import { useEffect, useState } from 'react'
 import Graph from '@/components/Graph/Graph'
-import sample1 from './sample1.json'
-import sample2 from './sample2.json'
-import sample3 from './sample3.json'
 
 export default function Page() {
   const [owl, setOwl] = useState('sample1');
@@ -20,13 +17,18 @@ export default function Page() {
   const handleChange = (event: SelectChangeEvent) => {
     setOwl(event.target.value)
   }
+  async function loadOwl() {
+    let path = ''
+    switch (owl) {
+      case 'sample1': path = '/samples/sample1.json'; break
+      case 'sample2': path = '/samples/sample2.json'; break
+      case 'sample3': path = '/samples/sample3.json'; break
+    }
+    await fetch(path).then(x => x.json()).then(x => setData(x))
+  }
 
   useEffect(() => {
-    switch (owl) {
-      case 'sample1': setData(sample1); break
-      case 'sample2': setData(sample2); break
-      case 'sample3': setData(sample3); break
-    }
+    loadOwl()
   }, [owl])
 
   return (
