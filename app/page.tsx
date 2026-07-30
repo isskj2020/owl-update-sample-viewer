@@ -10,6 +10,8 @@ import {
 import { useEffect, useState } from 'react'
 import Graph from '@/components/Graph/Graph'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH + '/samples' ?? ''
+
 export default function Page() {
   const [owl, setOwl] = useState('sample1');
   const [data, setData] = useState('{}');
@@ -20,11 +22,11 @@ export default function Page() {
   async function loadOwl() {
     let path = ''
     switch (owl) {
-      case 'sample1': path = '/samples/sample1.json'; break
-      case 'sample2': path = '/samples/sample2.json'; break
-      case 'sample3': path = '/samples/sample3.json'; break
+      case 'sample1': file = `sample1.json`; break
+      case 'sample2': file = `sample2.json`; break
+      case 'sample3': file = `sample3.json`; break
     }
-    await fetch(path).then(x => x.json()).then(x => setData(x))
+    await fetch(`${basePath}/${file}`).then(x => x.json()).then(x => setData(x))
   }
 
   useEffect(() => {
