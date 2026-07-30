@@ -1,0 +1,173 @@
+{
+  "nodes": [
+    {
+      "id": 2,
+      "name": "ex:Organism",
+      "violated": false
+    },
+    {
+      "id": 4,
+      "name": "ex:Cat",
+      "violated": false
+    },
+    {
+      "id": 1,
+      "name": "Thing",
+      "violated": false
+    },
+    {
+      "id": 5,
+      "name": "ex:Animal",
+      "violated": false
+    },
+    {
+      "id": 6,
+      "name": "ex:NeuroRobot",
+      "violated": true
+    },
+    {
+      "id": 3,
+      "name": "ex:Robot",
+      "violated": false
+    }
+  ],
+  "axioms": {
+    "constraints": [
+      {
+        "depth": 1,
+        "id": "zqSaSDL56Ya0lPr8p1nFfSIaMCfoXYoB",
+        "parent": "Thing",
+        "priority": 1.0,
+        "repair_cost": 9.223372036854776e18,
+        "subject": "ex:Organism",
+        "type": 1,
+        "violation": 0
+      },
+      {
+        "depth": 1,
+        "id": "AkTWUNWkEYDGdqfsKJ8RKLJbIE39gF9F",
+        "parent": "Thing",
+        "priority": 1.0,
+        "repair_cost": 9.223372036854776e18,
+        "subject": "ex:Robot",
+        "type": 1,
+        "violation": 0
+      },
+      {
+        "depth": 3,
+        "id": "i8DaDCJau1aLzfiERnRpSZ5zTUpND37X",
+        "parent": "ex:Animal",
+        "priority": 1.0,
+        "repair_cost": 9.223372036854776e18,
+        "subject": "ex:Cat",
+        "type": 1,
+        "violation": 0
+      },
+      {
+        "depth": 3,
+        "id": "IQTV6u8C4TQLf5AaaC1A3gqLcmvdOQa2",
+        "parent": "ex:Animal",
+        "priority": 0.5,
+        "repair_cost": 0.0625,
+        "subject": "ex:NeuroRobot",
+        "type": 1,
+        "violation": 1
+      },
+      {
+        "depth": 2,
+        "id": "DKUTrZFLwz5yrfelMCwQfbuOhrImi1MY",
+        "parent": "ex:Organism",
+        "priority": 1.0,
+        "repair_cost": 0.25,
+        "subject": "ex:Animal",
+        "type": 1,
+        "violation": 1
+      },
+      {
+        "depth": 3,
+        "id": "T9EWqgd6nyMNwLJuWrltLa9wlrRvTTFd",
+        "parent": "ex:Robot",
+        "priority": 0.8,
+        "repair_cost": 0.1,
+        "subject": "ex:NeuroRobot",
+        "type": 1,
+        "violation": 1
+      },
+      {
+        "depth": 1,
+        "id": "1EWAKVzP85w39TQM6HoltYB4qeFO5iZ4",
+        "left": "ex:Organism",
+        "priority": 1.0,
+        "repair_cost": 0.5,
+        "right": "ex:Robot",
+        "type": 2,
+        "violation": 1
+      }
+    ],
+    "namespaces": {
+      "xml:base": "http://prgmon.com/onotology/tutorial",
+      "xmlns:ex": "http://prgmon.com/ontology/tutorial/1#",
+      "xmlns:owl": "http://www.w3.org/2002/07/owl#",
+      "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "xmlns:rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+      "xmlns:xml": "http://www.w3.org/XML/1998/namespace",
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "nodemap": {
+      "Thing": 1,
+      "ex:Animal": 5,
+      "ex:Cat": 4,
+      "ex:NeuroRobot": 6,
+      "ex:Organism": 2,
+      "ex:Robot": 3
+    },
+    "violated_nodes": [
+      6
+    ],
+    "violation_score": 3.3
+  },
+  "edges": [
+    {
+      "source": 2,
+      "target": 1,
+      "type": "subClassOf",
+      "label": "p=1.0"
+    },
+    {
+      "source": 3,
+      "target": 1,
+      "type": "subClassOf",
+      "label": "p=1.0"
+    },
+    {
+      "source": 5,
+      "target": 2,
+      "type": "subClassOf",
+      "label": "p=1.0"
+    },
+    {
+      "source": 6,
+      "target": 3,
+      "type": "subClassOf",
+      "label": "p=0.8"
+    },
+    {
+      "source": 4,
+      "target": 5,
+      "type": "subClassOf",
+      "label": "p=1.0"
+    },
+    {
+      "source": 6,
+      "target": 5,
+      "type": "subClassOf",
+      "label": "p=0.5"
+    },
+    {
+      "source": 2,
+      "target": 3,
+      "type": "disjointWith",
+      "label": "p=1.0"
+    }
+  ]
+}
