@@ -20,7 +20,7 @@ export default function Page() {
     setOwl(event.target.value)
   }
   async function loadOwl() {
-    let path = ''
+    let file = ''
     switch (owl) {
       case 'sample1': file = `sample1.json`; break
       case 'sample2': file = `sample2.json`; break
