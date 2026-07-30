@@ -12,7 +12,7 @@ import Graph from '@/components/Graph/Graph'
 
 export default function Page() {
   const [owl, setOwl] = useState('sample1');
-  const [data, setData] = useState(sample1);
+  const [data, setData] = useState('{}');
 
   const handleChange = (event: SelectChangeEvent) => {
     setOwl(event.target.value)
